@@ -25,11 +25,11 @@ export default class ItemPage extends Component {
   renderItem() {
     let { itemId } = this.props;
     let item = this.state.items;
-    return item.map(item => {
+    return item.map((item,index) => {
       if (item.name === itemId) {
         const { country, price, url, description, name } = item;
         return (
-          <>
+          <Row key={index}>
             <Col lg={{ size: 5, offset: 1 }}>
               <img className="shop__girl" src={url} alt="coffee_item" />
             </Col>
@@ -49,7 +49,7 @@ export default class ItemPage extends Component {
                 <span className="shop__point-price">{price}</span>
               </div>
             </Col>
-          </>
+          </Row>
         );
       }
     });
@@ -66,7 +66,7 @@ export default class ItemPage extends Component {
         <Banner />
         <section className="shop">
           <Container>
-            <Row>{oneItem}</Row>
+            {oneItem}
           </Container>
         </section>
       </>
