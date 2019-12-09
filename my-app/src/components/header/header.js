@@ -17,7 +17,7 @@ const Header = () => {
             <Link to="/coffeepage">Our coffee</Link>
           </li>
           <li className="header__item">
-            <Link to="/" href="#">For your pleasure</Link>
+            <Link to="#">For your pleasure</Link>
           </li>
         </ul>
       </header>

@@ -31,10 +31,10 @@ export default class CoffeePage extends Component {
     this.getInfo();
   }
 
-  filter = arg => {
+  filter = (arg) => {
     this.setState(({ arr }) => {
       let newArr = arr.filter(item => {
-        if (arg == item.country) {
+        if (arg === item.country) {
           return item;
         }
       });
@@ -43,6 +43,23 @@ export default class CoffeePage extends Component {
       };
     });
   };
+
+  onUpdateSearch= (e)=> {
+    const term = e.target.value;
+    this.setState({arr2: this.searchPost(this.state.arr, term)})
+  }
+
+  searchPost(items,term) {
+    if(term.length === 0) {
+        return items
+    }
+
+    return items.filter((item) => {
+      let a = item.name.toLowerCase();
+        term=term.toLowerCase();
+        return a.indexOf(term) > -1
+      })
+  }
 
   render() {
     const { loading, error } = this.state;
@@ -70,6 +87,7 @@ export default class CoffeePage extends Component {
                     type="text"
                     placeholder="start typing here..."
                     className="shop__search-input"
+                    onChange = {this.onUpdateSearch}
                   />
                 </form>
               </Col>

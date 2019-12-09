@@ -42,9 +42,9 @@ const MainPage = ({history}) => {
             <Col lg={{ size: 10, offset: 1 }}>
               <div className="best__wrapper">
                 <BestItems
-                  omItemSelected={name => {
+                  onItemSelected={name => {
                     history.push(`/coffeepage/${name}`);
-                  }} 
+                  }}
                 />
               </div>
             </Col>
