@@ -5,9 +5,24 @@ import Footer from "../footer";
 import MainPage from "../pages/mainPage";
 import CoffeePage from "../pages/coffeePage";
 import ItemPage from "../pages/itemPage/";
+import ErrorMessage from "../errorMessage/errorMessage";
 
 export default class App extends Component {
+  state = {
+    error: false
+  }
+
+  componentDidCatch() {
+    this.setState({
+      error: true
+    })
+  }
+
   render() {
+    if(this.state.error){
+      return <ErrorMessage/>
+    }
+    
     return (
       <Router>
         <Route path ="/" exact component={MainPage}/>
